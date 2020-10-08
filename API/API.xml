@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="T:API.API.DataUnitType">
+            <summary>
+            Defines the unit Type that the Station Data Value is Stored in. eg the "UnitType"
+            </summary>
+            <remarks>This creates a standard to make it easier for other Plugin Creators.</remarks>
+        </member>
+        <member name="P:API.API.StationData.LastUpdated">
+            <summary>
+            Declares the last time the Station Data was Updated
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks>Update this whenever data is Sucessfully retrived from the Station. This is also used to tell if the Plugin has stopped working, if its caught in a loop etc.</remarks>
+        </member>
+        <member name="M:API.API.IWXStation.ApplySettings(System.Collections.ObjectModel.ObservableCollection{API.API.Config})">
+            <summary>
+            Apply New Settings to the Station
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:API.API.IWXStation.Update">
+            <summary>
+            (Not Implemented)
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:API.API.IWXStation.Disconnect">
+            <summary>
+            This is called on program shutdown.
+            </summary>
+            <remarks>Use this to close TCP/IP, Serial Ports etc.</remarks>
+        </member>
+        <member name="M:API.API.MiscFunctions.GetSerialNames">
+            <summary>
+            Gets a List of all the Serial Ports on the PC, Including Virtual Ports
+            </summary>
+            <returns>A List of all the Serial Ports on the PC, Including Virtual Ports</returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:My.Resources.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:My.Resources.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:My.Resources.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,6 @@
+﻿'Dim PressureAltitude As Double = (29.92 - BarometerCur_InHg) * (1000 + StationElevation_Feet)
+            'DensityAltitude_Feet = PressureAltitude + ((288.15 - 0.0019812 * PressureAltitude) / 0.0019812) * (1 - ((288.15 - 0.0019812 * PressureAltitude) / (273.15 + TempOut_Kelvin)) ^ 0.234969)
+            'Dim PressureAltitude As Double = (1 - (Conversion.inHg_to_mBar(BarometerCur_InHg) / 1013.25) ^ 0.190284) * 145366.45
+
+            'Noaa_DensityAltitude_Feet = 145442.16 * (1 - ((17.326 * BarometerCur_InHg) / (459.67 + TempOut_F)) ^ 0.235)
+            'Noaa_DensityAltitude_Feet = Math.Round(Noaa_DensityAltitude_Feet)
