@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="Wunderground_Forecast.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <!--<DockPanel Grid.Row="0" HorizontalAlignment="Center">
+            <MediaElement DockPanel.Dock="Left" x:Name="Radar1" HorizontalAlignment="left" Width="500" Source="http://api.wunderground.com/api/7779541dce7fe864/animatedradar/q/VA/Callands.gif?radius=150&amp;width=1024&amp;height=768&amp;newmaps=1&amp;rainsnow=1&amp;smooth=1&amp;noclutter=1&amp;num=15&amp;delay=20&amp;timelabel=1" MediaEnded="MediaElement_MediaEnded" Margin="15,5" UnloadedBehavior="Manual"/>
+            <MediaElement DockPanel.Dock="Left" x:Name="Radar2" HorizontalAlignment="left" Width="500" Source="http://api.wunderground.com/api/7779541dce7fe864/animatedsatellite/q/VA/Callands.gif?basemap=1&amp;timelabel=1&amp;num=15&amp;delay=50&amp;radius=150&amp;key=sat_vis&amp;width=1024&amp;height=768" MediaEnded="MediaElement2_MediaEnded" Margin="15,5" UnloadedBehavior="Manual"/>
+            -->
+        <!--<MediaElement DockPanel.Dock="Left" x:Name="Radar3" HorizontalAlignment="Center" Width="500" Source="http://api.wunderground.com/api/7779541dce7fe864/animatedradar/q/VA/Callands.gif?radius=150&amp;width=1024&amp;height=768&amp;newmaps=1&amp;rainsnow=1&amp;smooth=1&amp;noclutter=1&amp;num=15&amp;delay=20&amp;timelabel=1" MediaEnded="MediaElement_MediaEnded" Margin="15,5" UnloadedBehavior="Manual"/>-->
+        <!--
+        </DockPanel>-->
+
+        <ListView Grid.Row="0" x:Name="Mainlist" Background="Transparent" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" BorderBrush="{x:Null}" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}" ItemWidth="{Binding (ListView.View).ItemWidth,  RelativeSource={RelativeSource AncestorType=ListView}}" MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}" ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="20" BorderBrush="Transparent">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.6" SpreadMethod="Pad">
+                                <GradientStop Offset="1" Color="#59FFFFFF"/>
+                                <GradientStop Color="#CCFFFFFF"/>
+                                <GradientStop Color="#CCFFFFFF" Offset="0.188"/>
+                                <GradientStop Color="#59FFFFFF" Offset="0.355"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border CornerRadius="20" BorderThickness="1" BorderBrush="DarkSlateGray" >
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.5,0" Center="0.5,0" RadiusX="1" RadiusY="0.65">
+                                    <GradientStop Color="#33FFFFFF"/>
+                                    <GradientStop Color="#3FFFFFFF" Offset="0.7"/>
+                                    <GradientStop Offset="0.714"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <DockPanel Width="160">
+                                <TextBlock FontSize="24" Text="{Binding DayOfWeek}" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                <Image Source="{Binding IconURL}" Height="64" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                <TextBlock DockPanel.Dock="Top" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <Run FontSize="30" Text="{Binding ChanceOfPrecip}"/>
+                                    <Run FontSize="30" Text="%"/>
+                                </TextBlock>
+                                <TextBlock DockPanel.Dock="Top" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <Run FontSize="48" Text="{Binding HighTemp}"/>
+                                    <Run FontSize="48" Text="°/"/>
+                                    <Run FontSize="30" Text="{Binding LowTemp}"/>
+                                </TextBlock>
+                                <TextBlock FontSize="30" Text="{Binding Rain}" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                <TextBlock FontSize="30" Text="{Binding Snow}" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                <TextBlock FontSize="18" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} / {1}">
+                                            <Binding Path="MaxWind"/>
+                                            <Binding Path="MaxWindDir"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DockPanel>
+                        </Border>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Grid.Row="1" x:Name="Mainlist2" Background="Transparent" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Margin="0,0,0,75" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}" ItemWidth="{Binding (ListView.View).ItemWidth,  RelativeSource={RelativeSource AncestorType=ListView}}" MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}" ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                    <!--<StackPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"  MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}" Orientation="Horizontal" ScrollViewer.CanContentScroll="True" />-->
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border x:Name="Mainborder" Width="480" Height="280" CornerRadius="20" BorderThickness="1" BorderBrush="#FF437272" HorizontalAlignment="Left" Margin="0" ClipToBounds="True">
+                        <Border.Background>
+                            <RadialGradientBrush GradientOrigin="0.5,0" Center="0.5,0" RadiusX="1.1" RadiusY="0.7">
+                                <GradientStop Color="#33FFFFFF"/>
+                                <GradientStop Color="#3FFFFFFF" Offset="0.68"/>
+                                <GradientStop Offset="0.73" Color="#3F515151"/>
+                            </RadialGradientBrush>
+                        </Border.Background>
+                        <Grid ClipToBounds="True">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0" ClipToBounds="True">
+                                <Image Source="{Binding DayIconURL}" Height="64" DockPanel.Dock="Left" VerticalAlignment="Top" Margin="3,0"/>
+                                <TextBlock FontSize="26" Text="{Binding DayOfWeek}" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                <TextBlock FontSize="18" TextWrapping="Wrap" Text="{Binding DayText}" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,3,3"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1" ClipToBounds="True">
+                                <Image Source="{Binding NightIconURL}" Height="64" DockPanel.Dock="Left" VerticalAlignment="Top" Margin="3,0"/>
+                                <TextBlock FontSize="26" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0">
+                                    <Run Text="{Binding DayOfWeek}"/>
+                                    <Run Text=" Night"/>
+                                </TextBlock>
+                                <TextBlock FontSize="18" TextWrapping="Wrap" Text="{Binding NightText}" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,3,3"/>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <DockPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button FontSize="20" Padding="10,0" Content="Update Forecast" VerticalAlignment="Bottom" Margin="20" Height="46" Click="Update_Forecast"/>
+            <Border Grid.Row="1" DockPanel.Dock="Left" VerticalAlignment="Bottom" HorizontalAlignment="Center" CornerRadius="10" Margin="20,20,20,15" MouseDown="Border_MouseDown" Cursor="Hand">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.6" SpreadMethod="Reflect">
+                        <GradientStop Offset="1" Color="#66FFFFFF"/>
+                        <GradientStop Color="#CCFFFFFF"/>
+                        <GradientStop Color="#CCFFFFFF" Offset="0.188"/>
+                        <GradientStop Color="#66FFFFFF" Offset="0.355"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <DockPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                    <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15,0,0,10" FontSize="13">
+                        <Run Text="Forecast Provided By:"/>
+                        <LineBreak/>
+                        <Hyperlink NavigateUri="http://www.wunderground.com/weather-forecast/US/VA/Callands.html" RequestNavigate="Hyperlink_RequestNavigate">Weather Underground</Hyperlink>
+                    </TextBlock>
+                    <Border BorderThickness="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="136" Height="36" Margin="15,10,20,10">
+                        <Border.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="wundergroundLogo_4c_horz.jpg"/>
+                        </Border.Background>
+                    </Border>
+                </DockPanel>
+            </Border>
+            
+            <Border Grid.Row="1" DockPanel.Dock="Left" VerticalAlignment="Bottom" HorizontalAlignment="Right" CornerRadius="10" Margin="20,20,20,20">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.6" SpreadMethod="Reflect">
+                        <GradientStop Offset="1" Color="#66FFFFFF"/>
+                        <GradientStop Color="#CCFFFFFF"/>
+                        <GradientStop Color="#CCFFFFFF" Offset="0.188"/>
+                        <GradientStop Color="#66FFFFFF" Offset="0.355"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock x:Name="errorText" DockPanel.Dock="Left" TextAlignment="Center" Grid.Row="1" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">
+                <Run Text="{Binding ErrorType}"/>
+                <LineBreak/>
+                <Run Text="{Binding ErrorDescription}"/>
+                </TextBlock>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>
