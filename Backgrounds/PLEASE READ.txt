@@ -1,0 +1,1 @@
+This folder is for storing background images. We have deleted the images that were being used prior to opensourcing. This was doen to prevent any potential licensing issues.

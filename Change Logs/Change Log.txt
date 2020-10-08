@@ -1,0 +1,74 @@
+﻿### Version 1.0.2.3 Beta ###
+ - Settings are now saved when the Options Window is closed instead of when the program is closed.
+ - Stations are now setup to Re-connect and use the new settings when the Options Window is closed.
+ - Fixed a bug that was causing the Station settings to be loaded after the Stations were told to open a connection.
+ - Changed how the station's Update method is called. Instead of keeping a thread in a constant Loop, its now setup to create a new thread at a specified interval. This will help prevent threads remaining open when the program has been closed.
+ - Window State (Windowed, Fullscreen, Maximized) is no longer remembered when Add-InWx is closed. Window location however is and you can still set the Window Startup mode in the Options.
+
+### Version 1.0.2.2 Beta ###
+ - Fixed a bug in the WUnderground_Forecast Plugin that was causing Add-InWx to crash when it couldn't get a reply from the WUnderground.com servers.
+ 
+API Changes:
+ - The calculation of all the Highs, Lows, Windchill, Heatindex etc. are now Auto implemented. This means less work on anyone who decides to write a Station Plugin.
+
+
+
+### Version 1.0.2.1 Beta ###
+ - Add-InWx now runs on Windows XP x86 (32 bit)
+ - Removed the '5 Min Wind Peak' and '1 Min Wind Average' from the Display.
+ - Station Highs and Lows are now saved to a file when Add-InWx is closed.
+ - Fixed a bug affecting the the Main Box background gradient. (It now Displays properly)
+ - Added an option to adjust the background transparency of the data boxes of the Main View. (This will help to optimize how the display looks with different background images)
+
+
+### Version 1.0.1.2 Beta ###
+ - Minor UI tweaks.
+ - Window Size, Location and Style (FullScreen, Maximized, Windowed) information is now stored when Add-InWx is Closed.
+ - Fixed Add-InWx not loading if a background Image was not selected.
+ - Units types are now set once for the entire program instead of individually for each view. (This required a Update to all the Plugins)
+ - Add-InWx is back to targeting .NET 4.0, So it should run on XP.
+ - Added a Rapid Fire Upload option To the Wunderground Uploader.
+ - The UV value should no longer display 25.5 when no UV sensor is present on the Connected Davis Station.
+                    
+                    
+### Version 1.0.1.1 Beta ###
+ - Add-InWx Now targets the .NET 4.5 (This Solves a few problems I had to work around while targeting .NET 4.0)
+ - Made major Performance optimizations on the MainView.
+ - Added a Way to select the background Image.
+ - Added High and low Outdoor Humidity.
+ - Added High and low Indoor Temperature.
+ - Fixed the Wind Chill Calculation.
+ - Fixed the Density Altitude Formula.
+ - Changed The way the List of Serial Port Names are Retrieved. (You are now presented a list of serial names (COM1 - COM255) regardless of if the serial port name is valid.)
+ - Added an 'Apparent Temperature' also known as 'Feels Like'.<br />
+                    
+                    
+### Version 1.0.0.5 Beta ###
+ - Stations are now updated using background threads. This will improve performance of the UI and the Updating of Station Data.
+ - Added an Options Window.
+ - Moved the Station settings from the title bar to the Options Window.
+ - Moved the Units selection to the Options Window.
+ - Added an Icon to the Program.
+ - Added a way to remove Stations.
+ - Added a Way to manually tell the background plugins to update.
+ - Added a 'Debugging Output' Window. (STILL NEEDS MAJOR WORK. The Current Issue lies with the ObservableCollection Not capable of Raising UI Update Events on the Proper Thread.)
+ - The USB connection Type for the Davis Stations now maps to the Serial Connection Type. (eg. USB and Serial modes are the same)
+ - Fixed the '3-Hour Pressure Change' and the 'Rain Last Hour' Calculations.
+ - All Plugins are Now loaded from the same 'Plugins' Folder.>
+ - The Options Window will show when the program starts if you don't have any stations configured.
+                    
+API Changes
+ - Station Data Values are now stored as Decimals instead of Strings, With the exception of the OTHER_NoConversion type.
+ - Removed the 'IValue' interface.
+ - Added a 'Debugging Output' (Primarily useful when creating plugins)
+                    
+                    
+### Version 1.0.0.4 Beta ###
+ - Program Api is now a separate .Dll
+ - Add-InWx will now look in the local (Users Documents\Add-InWx\Station Plugins) Folder for Station Plugins.
+ - Changed the color of the station status text on the title bar so its easier to read.
+ - Added the Program Name and current Version Number to the Main Window's title.
+ - Reduced the font size for the smaller data boxes so the 'Active Weather' would display properly.
+ - Settings for the Different View Plugins are now saved to files.
+ - Program will now look in the local (Users Documents\Add-InWx\Views Plugins) Folder for View Plugins
+ - Added a Way to change what units the data is displayed in.

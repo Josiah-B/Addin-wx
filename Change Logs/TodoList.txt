@@ -1,0 +1,65 @@
+﻿√ = Completed
+■ = Still Needs Work
++ = Higher Priority
+- = Lower Priority
+
+
+ ■ [1.0.0.5 Beta] Add a 'Debug Output' Messaging system to the API/UI to allow the User to see what's happening in the background and to allow for logging. (Need to have it Update a UI element Better)
+###<[1.0.0.5 Beta] Release Point>###
+ 
+
+ ■ API: Change The way the List of Serial Port Names are Retrieved. (Start with a List of COM1-COM255, then go through it trying to open each one. If the attempt fails, then remove the Serial Name from the List.)
+###<[1.0.1.1 Beta] Release Point>###
+
+ √ Moved the View selection from the right side over to the left.
+ √ Fixed a bug in the WUnderground_Forecast Plugin that was causing Add-InWx to crash when it couldn't get a reply from the WUnderground.com servers.
+   Add a way to see the current version of the program and plugins.
+   Add 10 and 1 min. Average Wind Speed Calculations to the Station Plugins.
+   Add Lat./Long. Location Info to the Station Plugins.
+   Add Sunrise and Sunset times to the Display.
+   Add The Property Changed Events to the Station Status to allow the status to be updated automatically.
+   Add a way to edit a station's name.
+   Come up with a different way to present the List of Views.(Maybe use a Tab system like what's on the right, except move it to the Left side. or use a dropdown menu similar to the station selection list.)
+   Add ToolTips to all the UI controls.
+   Add Options to tweak the values for each station.
+   Change when the Station Settings get updated to after being changed by the user.
+   Add "Reference ET" (Reference Evapotransperation)
+   Add Uploading of Historical Data, *.txt file exported from weatherLink software. (Need to look into what this .txt file actually is and where its uploaded to)
+###<[1.0.3.1 Beta] Release Point>###
+  
+  
++++ CHECK PERFORMANCE ON LOWER END PCS AND ON XP MACHINES. (Especially what the Options window looks like on XP)
+-- Create my own Border Style for the Main Window.
+
+API:
+ + Set the Background Plugins to update on Background Threads. (When they are told to update)
+   Add a 'ToolTip Text' field to the Config Settings.
+   Add Triggers to allow Background Plugins to be run when something happens. (eg. Right after the Station's data is updated.)
+++ CHECK ALL OF THE CONVERSION FORMULAS FOR ACCURACY!!
+   Add XML Documentation to the API.
+ √ Fix the Density altitude calculation.
+
+
+PLUGINS:
+  (Davis Plugin Change) Extend the Davis Station Plugin to allow for setting the Console Settings From software.
+ √ (View Plugin) create a way to show the list of Stations sorted by (eg. Highest High Temp, Lowest Low Temp, etc.)
+ √ (Plugin) Wunderground Uploads with rapid-fire upload option.
+
+ ■ CWOP Uploads (with CWOP Password to the UI and Enable uploading via a Password required Account.) [Testing Needed]
+
+
++++++ All Upload Plugins need a Way for the user to manually force an upload. +++++
+
+Tentatively planned Plugins / Features: (These are in no particular order)
+	SQL DataBase Connectivity for Data Logging / Graphing
+	WUnderground Radar and Forecast
+	USB / TCP/IP Webcam Support
+	Re-hosting of Weather Stations over TCP/IP (ie. if you have a Serial Connection to the WX Station, then this would allow TCP/IP Connections to be made to the Station)
+	(Plugin) Weather Alarms
+	(Plugin) Ocean Tide Forecasts
+	(Plugin) A fully customizable display (It would be setup so the user can choose what they want, where and how big.) I might add a separate program to create the displays, while still integrating the loading and displaying of the Screen layout in the main Program.
+	(Plugin) Alarms. These would have user definable thresholds and user definable alarm type/output. ie. the user could set the alarm to send a string out a specific Serial Port, play an audio file, beep, or make something change color or flash.
+	(Plugin) A full SQL server client for data logging. Would have semi macro based configuration for setting which values to log where. and Add a way to view the Logged data.
+	(Plugin) Data Graphing
+	(Plugin) Create a plugin that can utilize this weather map (http://earth.nullschool.net)
+	(Plugin) Support for the SteelSeries Gauges

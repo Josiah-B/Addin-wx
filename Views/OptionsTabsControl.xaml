@@ -1,0 +1,106 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="OptionsTabsControl"
+	x:Name="Options2" d:DesignWidth="150">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <Style x:Key="TabText" x:Name="TabText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+                <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter Property="FontStyle" Value="Oblique"/>
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="Background" Value="{x:Null}"/>
+            </Style>
+        </Grid.Resources>
+
+        <DockPanel>
+            <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding WXStation.Settings.Settings}" BorderBrush="{x:Null}" VerticalAlignment="Center">
+                
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="mainBorder" Width="Auto" Height="Auto" Margin="-1,1,1,0" VerticalAlignment="Top" Padding="10,0" CornerRadius="20,20,0,0" BorderThickness="1" HorizontalAlignment="Left">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,0" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0.3">
+                                    <GradientStop Color="#59FFFFFF" Offset="1"/>
+                                    <GradientStop Color="#75FFFFFF"/>
+                                    <GradientStop Color="#B2FFFFFF" Offset="0.702"/>
+                                    <GradientStop Color="#59FFFFFF" Offset="0.902"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.LayoutTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Border.LayoutTransform>
+                            <TextBlock Text="{Binding Key}"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type ContentPresenter}">
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Opacity" Value="1"/>
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="false">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+
+            <DockPanel Visibility="Collapsed">
+                <DockPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0B7800" Offset="1"/>
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#4BA0CA9C" Offset="0.704"/>
+                    </LinearGradientBrush>
+                </DockPanel.Background>
+                
+                <Border CornerRadius="3">
+                    <ListBox Background="{x:Null}" BorderBrush="LightGray" BorderThickness="1">
+                        <TextBlock FontSize="12" Margin="2,0"><Run Text="Test"/></TextBlock>
+                        <TextBlock FontSize="12" Margin="2,0"><Run Text="Test 1"/></TextBlock>
+                        <TextBlock FontSize="12" Margin="2,0" RenderTransformOrigin="0.5,0.5"><Run Text="Test 2"/></TextBlock>
+                    </ListBox>
+                </Border>
+                
+                <StackPanel>
+                    <Border Margin="2" Padding="5,0" VerticalAlignment="Top" CornerRadius="4" BorderBrush="#8E2863FF" BorderThickness="1">
+                        <TextBlock FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Test"/></TextBlock>
+                    </Border>
+                    <Border Margin="2" Padding="5,0" VerticalAlignment="Top" CornerRadius="4" BorderBrush="#8E2863FF" BorderThickness="1">
+                        <TextBlock FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="Test"/></TextBlock>
+                    </Border>
+                </StackPanel>
+            </DockPanel>
+
+        </DockPanel>
+    </Grid>
+</UserControl>
